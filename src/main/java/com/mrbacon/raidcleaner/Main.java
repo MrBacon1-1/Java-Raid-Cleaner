@@ -1,8 +1,13 @@
 package com.mrbacon.raidcleaner;
 
+import com.mrbacon.raidcleaner.commands.ChannelCleanCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 public class Main {
@@ -15,7 +20,7 @@ public class Main {
 
                 // Sets Bot Activity
 
-                .setActivity(Activity.watching("MrBacon"))
+                .setActivity(Activity.watching("MrBacon#7458"))
 
                 // Enabling Intents
 
@@ -25,11 +30,17 @@ public class Main {
 
                 // Adding Listeners/Command
 
+                .addEventListeners(new ChannelCleanCommand())
+
                 // Building The Bot
 
                 .build();
 
         // Adding The Slash Commands
+
+        bot.upsertCommand("cleanchannels", "Deleted all the channels with a specific name. ( Bot will shutdown after it is done! )").addOptions(
+                new OptionData(OptionType.STRING, "channelname", "Channel name you want to remove.")
+        ).setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)).queue();
 
 
         // This Gets Printed When The Bot Is Ready/Loaded
