@@ -20,7 +20,7 @@
 <p align="center">
   <b>~ 🌠 Features 🌠 ~</b><br><br>
 
-  - Coming Soon
+  - Channel Cleaner. 🗑️
   
 </p>
 <p align="center">
