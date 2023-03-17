@@ -36,7 +36,7 @@ public class ChannelCleanCommand extends ListenerAdapter {
                     for (TextChannel channel : channels) {
                         channel.delete().queue();
                     }
-                    System.out.println("Deleted " + channels.size() + " channels with name " + channelName + ".");
+                    System.out.println("Done deleting channels with the name " + channelName + ".");
                     event.getJDA().shutdown();
                 }
             }
